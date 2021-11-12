@@ -1,49 +1,59 @@
 package cl.voidkey.mangosd.api.parameter;
 
 public class Parameters {
-	
-	final static String soapMessage = "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/1999/XMLSchema\" xmlns:ns1=\"urn:MaNGOS\"><SOAP-ENV:Body><ns1:executeCommand><command>{comando}</command></ns1:executeCommand></SOAP-ENV:Body></SOAP-ENV:Envelope>";
-	static String user = "";
-	static String pass = "";
-	static String url = "";
-	static String port = "";
-	static String protocol = "";
-	
-	
-	public static String getSoapmessage() {
-		return soapMessage;
+
+	final static String SOAPMESSAGE = "<SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/1999/XMLSchema\" xmlns:ns1=\"urn:MaNGOS\"><SOAP-ENV:Body><ns1:executeCommand><command>{comando}</command></ns1:executeCommand></SOAP-ENV:Body></SOAP-ENV:Envelope>";
+	String user = "";
+	String pass = "";
+	String url = "";
+	String port = "";
+	String protocol = "";
+
+	private Parameters() {
 	}
-	public static String getUser() {
+
+	public String getSoapmessage() {
+		return SOAPMESSAGE;
+	}
+
+	public String getUser() {
 		return user;
 	}
-	public static void setUser(String user) {
-		Parameters.user = user;
+
+	public void setUser(String user) {
+		this.user = user;
 	}
-	public static String getPass() {
+
+	public String getPass() {
 		return pass;
 	}
-	public static void setPass(String pass) {
-		Parameters.pass = pass;
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
-	public static String getUrl() {
+
+	public String getUrl() {
 		return url;
 	}
-	public static void setUrl(String url) {
-		Parameters.url = url;
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
-	public static String getPort() {
+
+	public String getPort() {
 		return port;
 	}
-	public static void setPort(String port) {
-		Parameters.port = port;
+
+	public void setPort(String port) {
+		this.port = port;
 	}
-	public static String getProtocol() {
+
+	public String getProtocol() {
 		return protocol;
 	}
-	public static void setProtocol(String protocol) {
-		Parameters.protocol = protocol;
+
+	public void setProtocol(String protocol) {
+		this.protocol = protocol;
 	}
-	
-	
 
 }

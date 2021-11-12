@@ -9,10 +9,10 @@ import javax.ws.rs.core.Response;
 
 import cl.voidkey.mangosd.api.dto.Configure;
 import cl.voidkey.mangosd.api.dto.Execute;
-import cl.voidkey.mangosd.api.logic.apiLogic;
+import cl.voidkey.mangosd.api.logic.ApiLogic;
 
 @Path("/api/v1/mangos/")
-public class SoapClient extends apiLogic{
+public class SoapClient extends ApiLogic{
 	
 	@POST
 	@Path("execute")

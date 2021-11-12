@@ -14,10 +14,14 @@ import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 
+import org.apache.log4j.Logger;
+
 import cl.voidkey.mangosd.api.parameter.Parameters;
 
 
 public class SoapUtils extends Parameters {
+
+	private Logger logger = Logger.getLogger(SoapUtils.class);
 	
 	public String sendMessage(SOAPMessage mensaje) {
 		try {
@@ -30,11 +34,11 @@ public class SoapUtils extends Parameters {
 			String strMsg = new String(out.toByteArray());
 			return strMsg;
 		} catch (UnsupportedOperationException e) {
-			e.printStackTrace();
+			logger.error("Error operacion no soportada ", e);
 		} catch (SOAPException e) {
-			e.printStackTrace();
+			logger.error("SOAP Exception ", e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("IO Error ", e);
 		}
 		return null;
 	}
@@ -48,9 +52,9 @@ public class SoapUtils extends Parameters {
 			message.saveChanges();
 			return message;
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("IO Error ", e);
 		} catch (SOAPException e) {
-			e.printStackTrace();
+			logger.error("SOAP Exception ", e);
 		}
 		return null;
 	}

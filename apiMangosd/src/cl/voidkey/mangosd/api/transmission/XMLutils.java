@@ -12,6 +12,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -19,10 +20,14 @@ import org.xml.sax.SAXException;
 
 public class XMLutils {
 
+	Logger logger = Logger.getLogger(XMLutils.class);
+	
 	public String parseXML(String xml) {
 		String response = "";
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+			factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.parse(new InputSource(new StringReader(response)));
 
@@ -35,13 +40,13 @@ public class XMLutils {
 				response = res.item(x).getNodeValue();
 			}
 		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
+			logger.error("Error al parsear ", e);
 		} catch (SAXException e) {
-			e.printStackTrace();
+			logger.error("Error SAXON ", e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error IO ", e);
 		} catch (XPathExpressionException e) {
-			e.printStackTrace();
+			logger.error("Error XPath ", e);
 		}
 
 		return response;
