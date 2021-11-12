@@ -12,7 +12,7 @@ import cl.voidkey.mangosd.api.transmission.SoapUtils;
 import cl.voidkey.mangosd.api.transmission.XMLutils;
 
 public class ApiLogic extends Parameters{
-	
+
 	protected Logger logger = Logger.getLogger(ApiLogic.class);
 	
 	public ConfigureResponse configureApi(Configure input)

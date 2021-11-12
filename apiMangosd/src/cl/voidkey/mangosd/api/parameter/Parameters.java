@@ -9,9 +9,6 @@ public class Parameters {
 	String port = "";
 	String protocol = "";
 
-	private Parameters() {
-	}
-
 	public String getSoapmessage() {
 		return SOAPMESSAGE;
 	}
