@@ -1,5 +1,6 @@
 package cl.voidkey.mangosd.api.dto;
 
+import cl.voidkey.mangosd.api.exception.ConfigureException;
 import cl.voidkey.mangosd.api.parameter.Protocol;
 
 public class Configure {
@@ -42,33 +43,39 @@ public class Configure {
 	}
 	
 	
-	public ErrorObject validateConfigure() {
-		ErrorObject response = new ErrorObject();
+	public boolean validateConfigure() throws ConfigureException {
 		
 		if(!Protocol.HTTP.getInfoProtocol().equalsIgnoreCase(getProtocol()) && !Protocol.HTTPS.getInfoProtocol().equalsIgnoreCase(getProtocol())) {
-			response.setClase(this.getClass().getName());
-			response.setError("Protocolo no aceptado");
+			throw new ConfigureException("Protocolo no aceptado");
 		}
 		
-		if(getPass().length() <= 0)
+		if(getPass().length() <= 0 || getPass().length() > 25)
 		{
-			response.setClase(this.getClass().getName());
-			response.setError("Contraseña no valida");
+			throw new ConfigureException("Password no valida");
 		}
 		
-		if(getUser().length() <= 0) {
-			response.setClase(this.getClass().getName());
-			response.setError("Usuario no valido");
+		if(getUser().length() <= 0 || getPass().length() > 25) {
+			throw new ConfigureException("Usuario no valido");
 		}
 		
 		if(getPort().length() <= 0)
 		{
-			response.setClase(this.getClass().getName());
-			response.setError("Puerto no valido");
+			throw new ConfigureException("Usuario no valido");
 		}
 		
+		try {
+			Integer.parseInt(getPort());
+		}catch(Exception e)
+		{
+			throw new ConfigureException("puerto no valido");
+		}
 		
-		return response;
+		if(getUrl().length() <= 0)
+		{
+			throw new ConfigureException("Url no valida");
+		}
+		
+		return true;
 		
 	}
 	
